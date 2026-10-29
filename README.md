@@ -26,21 +26,22 @@ The agent can choose from four actions:
 
 During training, the agent uses an epsilon-greedy policy to select actions and updates its Q-table according to the rewards it receives.
 
-The Q-learning update is based on:
+The Q-table is updated using the Q-learning rule:
 
-\[
-Q(s,a) \leftarrow (1-\alpha)Q(s,a)
-+\alpha\left[r+\gamma\max_{a'}Q(s',a')\right]
-\]
+$$
+Q(s,a) \leftarrow Q(s,a) + \alpha \left[r + \gamma \max_{a'} Q(s',a') - Q(s,a)\right]
+$$
 
 where:
 
-- \(s\): Current state
-- \(a\): Selected action
-- \(r\): Received reward
-- \(s'\): Next state
-- \(\alpha\): Learning rate
-- \(\gamma\): Discount factor
+- `s`: Current state
+- `a`: Selected action
+- `r`: Received reward
+- `s'`: Next state
+- `alpha (α)`: Learning rate
+- `gamma (γ)`: Discount factor
+- `max Q(s', a')`: Highest estimated future action value across all possible next actions.
+
 
 ## Configuration
 
